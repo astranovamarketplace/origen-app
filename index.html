@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origen — Vuelve a ti</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blanco: #faf9f6;
+    --negro: #1a1a18;
+    --salvia: #7d9b76;
+    --salvia-medio: #a8c2a2;
+    --salvia-palido: #e8efe6;
+    --salvia-suave: #f2f7f1;
+    --gris: #888880;
+    --gris-claro: #d4d2cc;
+    --borde: #e2dfd8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--blanco);
+    color: var(--negro);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .screen { display: none; width: 100%; max-width: 420px; padding: 2.5rem 1.75rem; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; }
+  .screen.active { display: flex; }
+
+  /* ACCESO */
+  .access-top { text-align: center; margin-bottom: 3.5rem; }
+  .marca-circulo {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: var(--salvia-palido);
+    border: 0.5px solid var(--salvia-medio);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; letter-spacing: 0.28em; color: var(--negro); }
+  .sub { font-size: 10px; letter-spacing: 0.18em; color: var(--gris); margin-top: 8px; }
+
+  .field-wrap { width: 100%; }
+  .field-label { font-size: 10px; letter-spacing: 0.18em; color: var(--gris); margin-bottom: 14px; display: block; }
+  .field-input {
+    width: 100%; background: transparent; border: none;
+    border-bottom: 1px solid var(--borde);
+    padding: 10px 0;
+    font-family: 'Jost', sans-serif; font-size: 20px; font-weight: 300;
+    color: var(--negro); letter-spacing: 0.22em; text-align: center;
+    outline: none; transition: border-color 0.3s;
+  }
+  .field-input::placeholder { color: var(--gris-claro); font-size: 13px; letter-spacing: 0.1em; }
+  .field-input:focus { border-bottom-color: var(--salvia); }
+
+  .access-btn {
+    width: 100%; margin-top: 2rem; padding: 15px;
+    background: var(--negro); border: none; border-radius: 2px;
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.22em; color: var(--blanco);
+    cursor: pointer; transition: background 0.3s;
+  }
+  .access-btn:hover { background: var(--salvia); }
+
+  .access-error { font-size: 11px; color: #b07060; letter-spacing: 0.08em; text-align: center; margin-top: 1rem; min-height: 16px; }
+  .access-footer { font-size: 10px; color: var(--gris); letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
+  .link-salvia { color: var(--salvia); cursor: pointer; }
+
+  /* APP */
+  .app-header {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 1.25rem; margin-bottom: 2rem;
+    border-bottom: 0.5px solid var(--borde);
+  }
+  .app-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.22em; color: var(--negro); }
+  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: var(--gris); text-align: right; line-height: 1.9; }
+
+  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: var(--gris-claro); text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
+
+  .card-wrap { width: 100%; margin-bottom: 1.25rem; cursor: pointer; }
+
+  .oracle-card {
+    width: 100%; background: var(--salvia-suave);
+    border: 0.5px solid var(--salvia-medio); border-radius: 6px;
+    padding: 2.5rem 2rem; min-height: 300px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; transition: border-color 0.3s, background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .oracle-card:hover { border-color: var(--salvia); background: var(--salvia-palido); }
+  .wm { position: absolute; pointer-events: none; opacity: 0.08; }
+  .wm-br { bottom: -28px; right: -28px; width: 160px; height: 160px; }
+  .wm-tl { top: -28px; left: -28px; width: 100px; height: 100px; opacity: 0.05; }
+
+  .card-idle { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+  .idle-icon { width: 54px; height: 54px; }
+  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: var(--gris); }
+  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: var(--gris-claro); }
+
+  .card-revealed { display: none; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; }
+  .r-num { font-size: 9px; letter-spacing: 0.22em; color: var(--salvia); }
+  .r-nombre { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--negro); letter-spacing: 0.06em; }
+  .r-area { font-size: 9px; letter-spacing: 0.18em; color: var(--gris); }
+  .linea { width: 28px; height: 0.5px; background: var(--salvia); margin: 0.15rem 0; }
+  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #666660; line-height: 1.85; }
+
+  .afirmacion-wrap {
+    width: 100%; background: white;
+    border-radius: 4px; border: 0.5px solid var(--borde);
+    padding: 1rem 1.25rem; margin-top: 0.25rem;
+  }
+  .afirmacion-label { font-size: 8px; letter-spacing: 0.22em; color: var(--salvia); margin-bottom: 7px; }
+  .afirmacion-text { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--negro); line-height: 1.65; }
+
+  /* AFTER */
+  .after-section { width: 100%; display: none; flex-direction: column; gap: 0.875rem; }
+  .after-section.visible { display: flex; }
+
+  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: var(--gris); margin-bottom: 8px; }
+  .reflexion-input {
+    width: 100%; background: white;
+    border: 0.5px solid var(--borde); border-radius: 4px;
+    padding: 12px 14px;
+    font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic;
+    color: var(--negro); resize: none; min-height: 76px;
+    outline: none; transition: border-color 0.3s; line-height: 1.7;
+  }
+  .reflexion-input::placeholder { color: var(--gris-claro); }
+  .reflexion-input:focus { border-color: var(--salvia); }
+
+  .btn-row { display: flex; gap: 8px; }
+  .btn-sec {
+    flex: 1; padding: 12px; background: white;
+    border: 0.5px solid var(--borde); border-radius: 2px;
+    font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
+    color: var(--gris); cursor: pointer; transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-sec:hover { border-color: var(--salvia); color: var(--salvia); }
+
+  .btn-pri {
+    flex: 1; padding: 12px; background: var(--salvia-palido);
+    border: 0.5px solid var(--salvia-medio); border-radius: 2px;
+    font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
+    color: var(--negro); cursor: pointer; transition: background 0.3s;
+  }
+  .btn-pri:hover { background: var(--salvia-medio); }
+
+  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: var(--gris-claro); text-align: center; margin-top: 2rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.65s ease forwards; }
+
+  .toast {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    background: var(--negro); color: var(--blanco);
+    font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.12em;
+    padding: 10px 22px; border-radius: 2px;
+    opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap;
+  }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- ACCESO -->
+<div class="screen active" id="screen-access">
+  <div class="access-top">
+    <div class="marca-circulo">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <circle cx="17" cy="17" r="3.5" fill="#7d9b76"/>
+        <circle cx="17" cy="4" r="1.8" fill="#a8c2a2"/>
+        <circle cx="17" cy="30" r="1.8" fill="#a8c2a2"/>
+        <circle cx="4" cy="17" r="1.8" fill="#a8c2a2"/>
+        <circle cx="30" cy="17" r="1.8" fill="#a8c2a2"/>
+        <line x1="17" y1="7" x2="17" y2="13" stroke="#a8c2a2" stroke-width="0.5"/>
+        <line x1="17" y1="21" x2="17" y2="27" stroke="#a8c2a2" stroke-width="0.5"/>
+        <line x1="7" y1="17" x2="13" y2="17" stroke="#a8c2a2" stroke-width="0.5"/>
+        <line x1="21" y1="17" x2="27" y2="17" stroke="#a8c2a2" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="wordmark">ORIGEN</div>
+  </div>
+
+  <div class="field-wrap">
+    <label class="field-label">CÓDIGO DE ACCESO</label>
+    <input class="field-input" id="codigo-input" type="text" placeholder="ingresa tu código" autocomplete="off" spellcheck="false">
+    <div class="access-error" id="access-error"></div>
+    <button class="access-btn" onclick="verificarCodigo()">ENTRAR</button>
+  </div>
+
+  <div class="access-footer">
+    ¿Aún no tienes acceso?<br>
+    <span class="link-salvia" onclick="alert('Próximamente en origen.app')">Obtén el tuyo aquí</span>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="screen" id="screen-app">
+  <div class="app-header">
+    <div class="app-logo">ORIGEN</div>
+    <div class="app-fecha" id="app-fecha"></div>
+  </div>
+
+  <p class="tap-hint" id="tap-hint">TOCA PARA RECIBIR TU MENSAJE DE HOY</p>
+
+  <div class="card-wrap" onclick="revelarCarta()">
+    <div class="oracle-card" id="oracle-card">
+
+      <svg class="wm wm-br" viewBox="0 0 160 160" fill="none"><circle cx="80" cy="80" r="78" stroke="#7d9b76" stroke-width="1"/><circle cx="80" cy="80" r="10" stroke="#7d9b76" stroke-width="1" fill="none"/><circle cx="80" cy="14" r="4" fill="#7d9b76"/><circle cx="80" cy="146" r="4" fill="#7d9b76"/><circle cx="14" cy="80" r="4" fill="#7d9b76"/><circle cx="146" cy="80" r="4" fill="#7d9b76"/><line x1="80" y1="20" x2="80" y2="69" stroke="#7d9b76" stroke-width="1"/><line x1="80" y1="91" x2="80" y2="140" stroke="#7d9b76" stroke-width="1"/><line x1="20" y1="80" x2="69" y2="80" stroke="#7d9b76" stroke-width="1"/><line x1="91" y1="80" x2="140" y2="80" stroke="#7d9b76" stroke-width="1"/></svg><svg class="wm wm-tl" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="#7d9b76" stroke-width="1"/><circle cx="50" cy="50" r="7" stroke="#7d9b76" stroke-width="1" fill="none"/><circle cx="50" cy="8" r="3" fill="#7d9b76"/><circle cx="50" cy="92" r="3" fill="#7d9b76"/><circle cx="8" cy="50" r="3" fill="#7d9b76"/><circle cx="92" cy="50" r="3" fill="#7d9b76"/><line x1="50" y1="12" x2="50" y2="42" stroke="#7d9b76" stroke-width="0.8"/><line x1="50" y1="58" x2="50" y2="88" stroke="#7d9b76" stroke-width="0.8"/><line x1="12" y1="50" x2="42" y2="50" stroke="#7d9b76" stroke-width="0.8"/><line x1="58" y1="50" x2="88" y2="50" stroke="#7d9b76" stroke-width="0.8"/></svg><div class="card-idle" id="card-idle">
+        <svg class="idle-icon" viewBox="0 0 54 54" fill="none">
+          <circle cx="27" cy="27" r="26" stroke="#a8c2a2" stroke-width="0.5"/>
+          <circle cx="27" cy="27" r="3.5" fill="#7d9b76"/>
+          <circle cx="27" cy="7" r="2" fill="#c4d9c0"/>
+          <circle cx="27" cy="47" r="2" fill="#c4d9c0"/>
+          <circle cx="7" cy="27" r="2" fill="#c4d9c0"/>
+          <circle cx="47" cy="27" r="2" fill="#c4d9c0"/>
+          <line x1="27" y1="10" x2="27" y2="23" stroke="#c4d9c0" stroke-width="0.5"/>
+          <line x1="27" y1="31" x2="27" y2="44" stroke="#c4d9c0" stroke-width="0.5"/>
+          <line x1="10" y1="27" x2="23" y2="27" stroke="#c4d9c0" stroke-width="0.5"/>
+          <line x1="31" y1="27" x2="44" y2="27" stroke="#c4d9c0" stroke-width="0.5"/>
+        </svg>
+        <div class="idle-text">el universo ya eligió tu mensaje</div>
+        <div class="idle-hint">— presiona para revelar —</div>
+      </div>
+
+      <div class="card-revealed" id="card-revealed">
+        <div class="r-num" id="r-num"></div>
+        <div class="r-nombre" id="r-nombre"></div>
+        <div class="r-area" id="r-area"></div>
+        <div class="linea"></div>
+        <div class="r-mensaje" id="r-mensaje"></div>
+        <div class="afirmacion-wrap">
+          <div class="afirmacion-label">AFIRMACIÓN DEL DÍA</div>
+          <div class="afirmacion-text" id="r-afirmacion"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="after-section" id="after-section">
+    <div>
+      <div class="reflexion-label">ESPACIO DE REFLEXIÓN</div>
+      <textarea class="reflexion-input" placeholder="¿qué te resonó de este mensaje?..." rows="3"></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn-sec" onclick="guardar()">GUARDAR</button>
+      <button class="btn-pri" onclick="nuevaLectura()">NUEVA LECTURA ↻</button>
+    </div>
+  </div>
+
+  <div class="app-footer">#vuelveatorigen</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const CODIGOS = ["ORIGEN2025", "BARRAS01", "YALUZ"];
+
+  const PUNTOS = [
+    { num: "PUNTO 01", nombre: "Dinero", area: "abundancia · flujo", mensaje: "La abundancia no es algo que persigues. Es algo que permites cuando dejas de creer que no mereces recibirla.", afirmacion: "Recibo con facilidad todo lo que el universo tiene para mí, ahora y siempre." },
+    { num: "PUNTO 05", nombre: "Creatividad", area: "creación · expresión", mensaje: "Tu creatividad no necesita permiso ni validación. Ya existe. Solo necesita espacio para fluir sin ser juzgada.", afirmacion: "Soy un canal abierto para ideas que transforman mi mundo y el de los demás." },
+    { num: "PUNTO 09", nombre: "Cuerpo", area: "bienestar · presencia", mensaje: "Tu cuerpo sabe más de lo que tu mente cree. Detente hoy y escúchalo. Una señal pequeña puede cambiarlo todo.", afirmacion: "Mi cuerpo es mi aliado más sabio. Lo honro, lo escucho, lo cuido." },
+    { num: "PUNTO 12", nombre: "Control", area: "libertad · soltar", mensaje: "¿Y si el control fuera solo un punto de vista que puedes elegir soltar? La vida fluye mejor cuando dejas de aferrarte a cómo debería ser.", afirmacion: "Confío en el flujo de mi vida y me permito ser sin resistencia." },
+    { num: "PUNTO 17", nombre: "Esperanza", area: "posibilidad · visión", mensaje: "La esperanza no es ingenua — es un acto de valentía. Elige hoy ver la posibilidad donde otros solo ven un límite.", afirmacion: "Elijo la posibilidad por encima de la certeza. Siempre hay otra forma." },
+    { num: "PUNTO 21", nombre: "Gratitud", area: "presencia · reconocimiento", mensaje: "Gratitud no es solo agradecer lo bueno. Es reconocer que incluso lo difícil te lleva hacia quien estás destinada a ser.", afirmacion: "Gracias por todo lo que soy, todo lo que tengo y todo lo que estoy creando." },
+    { num: "PUNTO 25", nombre: "Paz", area: "calma · centro", mensaje: "La paz que buscas afuera ya existe dentro de ti. Hoy no tienes que buscarla — solo recuerda que siempre estuvo ahí.", afirmacion: "Soy paz. La irradio, la vivo, la elijo en cada momento." },
+    { num: "PUNTO 29", nombre: "Vitalidad", area: "energía · fuerza", mensaje: "Tu energía es tu recurso más poderoso. Cuida hoy a quién y qué la recibe. No toda puerta merece que la abras.", afirmacion: "Mi energía es sagrada. La dirijo con consciencia hacia lo que me expande." },
+    { num: "PUNTO 32", nombre: "Consciencia", area: "expansión · ser", mensaje: "Hoy eres más consciente que ayer. Eso es suficiente. La consciencia no se mide — se vive, se siente, se elige.", afirmacion: "Me expando más allá de lo que creía posible. Soy más de lo que pienso." }
+  ];
+
+  let revealed = false;
+
+  function verificarCodigo() {
+    const val = document.getElementById('codigo-input').value.trim().toUpperCase();
+    const err = document.getElementById('access-error');
+    if (CODIGOS.includes(val)) {
+      document.getElementById('screen-access').classList.remove('active');
+      document.getElementById('screen-app').classList.add('active');
+      setFecha();
+    } else {
+      err.textContent = 'código no válido — verifica e intenta de nuevo';
+      setTimeout(() => err.textContent = '', 3000);
+    }
+  }
+
+  document.getElementById('codigo-input').addEventListener('keydown', e => { if (e.key === 'Enter') verificarCodigo(); });
+
+  function setFecha() {
+    const d = new Date();
+    const dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    document.getElementById('app-fecha').innerHTML = `${dias[d.getDay()]}<br>${d.getDate()} de ${meses[d.getMonth()]}`;
+  }
+
+  function revelarCarta() {
+    if (revealed) return;
+    revealed = true;
+    const d = new Date();
+    const p = PUNTOS[(d.getDate() + d.getMonth()) % PUNTOS.length];
+    document.getElementById('r-num').textContent = p.num;
+    document.getElementById('r-nombre').textContent = p.nombre;
+    document.getElementById('r-area').textContent = p.area;
+    document.getElementById('r-mensaje').textContent = p.mensaje;
+    document.getElementById('r-afirmacion').textContent = p.afirmacion;
+    document.getElementById('card-idle').style.display = 'none';
+    const rev = document.getElementById('card-revealed');
+    rev.style.display = 'flex';
+    rev.classList.add('fade-up');
+    document.getElementById('tap-hint').style.opacity = '0';
+    document.getElementById('after-section').classList.add('visible');
+    document.getElementById('oracle-card').style.cursor = 'default';
+  }
+
+  function guardar() { mostrarToast('reflexión guardada ✓'); }
+
+  function nuevaLectura() {
+    revealed = false;
+    document.getElementById('card-idle').style.display = 'flex';
+    const rev = document.getElementById('card-revealed');
+    rev.style.display = 'none';
+    rev.classList.remove('fade-up');
+    document.getElementById('after-section').classList.remove('visible');
+    document.getElementById('tap-hint').style.opacity = '1';
+    document.getElementById('oracle-card').style.cursor = 'pointer';
+  }
+
+  function mostrarToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+</script>
+</body>
+</html>
