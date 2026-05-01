@@ -10,11 +10,11 @@
     --blanco: #faf9f6;
     --negro: #1a1a18;
     --salvia: #7d9b76;
-    --salvia-medio: #a8c2a2;
-    --salvia-palido: #e8efe6;
-    --salvia-suave: #f2f7f1;
-    --gris: #888880;
-    --gris-claro: #d4d2cc;
+    --salvia-medio: #7d9b76;
+    --salvia-palido: #c8ddc4;
+    --salvia-suave: #ddeedd;
+    --gris: #444440;
+    --gris-claro: #666660;
     --borde: #e2dfd8;
   }
 
@@ -45,10 +45,10 @@
     margin: 0 auto 1.5rem;
   }
   .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; letter-spacing: 0.28em; color: var(--negro); }
-  .sub { font-size: 10px; letter-spacing: 0.18em; color: #555552; margin-top: 8px; }
+  .sub { font-size: 10px; letter-spacing: 0.18em; color: #2a2a28; margin-top: 8px; }
 
   .field-wrap { width: 100%; }
-  .field-label { font-size: 10px; letter-spacing: 0.18em; color: #555552; margin-bottom: 14px; display: block; }
+  .field-label { font-size: 10px; letter-spacing: 0.18em; color: #2a2a28; margin-bottom: 14px; display: block; }
   .field-input {
     width: 100%; background: transparent; border: none;
     border-bottom: 1px solid var(--borde);
@@ -57,7 +57,7 @@
     color: var(--negro); letter-spacing: 0.22em; text-align: center;
     outline: none; transition: border-color 0.3s;
   }
-  .field-input::placeholder { color: #555552; font-size: 13px; letter-spacing: 0.1em; }
+  .field-input::placeholder { color: #2a2a28; font-size: 13px; letter-spacing: 0.1em; }
   .field-input:focus { border-bottom-color: var(--salvia); }
 
   .access-btn {
@@ -70,7 +70,7 @@
   .access-btn:hover { background: var(--salvia); }
 
   .access-error { font-size: 11px; color: #b07060; letter-spacing: 0.08em; text-align: center; margin-top: 1rem; min-height: 16px; }
-  .access-footer { font-size: 10px; color: #555552; letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
+  .access-footer { font-size: 10px; color: #2a2a28; letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
   .link-salvia { color: var(--salvia); cursor: pointer; }
 
   /* APP */
@@ -80,9 +80,9 @@
     border-bottom: 0.5px solid var(--borde);
   }
   .app-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.22em; color: var(--negro); }
-  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: #555552; text-align: right; line-height: 1.9; }
+  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: #2a2a28; text-align: right; line-height: 1.9; }
 
-  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: #555552; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
+  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: #2a2a28; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
 
   .card-wrap { width: 100%; margin-bottom: 1.25rem; cursor: pointer; }
 
@@ -101,15 +101,15 @@
 
   .card-idle { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
   .idle-icon { width: 54px; height: 54px; }
-  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: #555552; }
-  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: #555552; }
+  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: #2a2a28; }
+  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: #2a2a28; }
 
   .card-revealed { display: none; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; }
   .r-num { font-size: 9px; letter-spacing: 0.22em; color: var(--salvia); }
   .r-nombre { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--negro); letter-spacing: 0.06em; }
-  .r-area { font-size: 9px; letter-spacing: 0.18em; color: #555552; }
+  .r-area { font-size: 9px; letter-spacing: 0.18em; color: #2a2a28; }
   .linea { width: 28px; height: 0.5px; background: var(--salvia); margin: 0.15rem 0; }
-  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #3a3a38; line-height: 1.85; }
+  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #1a1a18; line-height: 1.85; }
 
   .afirmacion-wrap {
     width: 100%; background: white;
@@ -123,7 +123,7 @@
   .after-section { width: 100%; display: none; flex-direction: column; gap: 0.875rem; }
   .after-section.visible { display: flex; }
 
-  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: #555552; margin-bottom: 8px; }
+  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: #2a2a28; margin-bottom: 8px; }
   .reflexion-input {
     width: 100%; background: white;
     border: 0.5px solid var(--borde); border-radius: 4px;
@@ -132,7 +132,7 @@
     color: var(--negro); resize: none; min-height: 76px;
     outline: none; transition: border-color 0.3s; line-height: 1.7;
   }
-  .reflexion-input::placeholder { color: #555552; }
+  .reflexion-input::placeholder { color: #2a2a28; }
   .reflexion-input:focus { border-color: var(--salvia); }
 
   .btn-row { display: flex; gap: 8px; }
@@ -140,7 +140,7 @@
     flex: 1; padding: 12px; background: white;
     border: 0.5px solid var(--borde); border-radius: 2px;
     font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
-    color: #555552; cursor: pointer; transition: border-color 0.3s, color 0.3s;
+    color: #2a2a28; cursor: pointer; transition: border-color 0.3s, color 0.3s;
   }
   .btn-sec:hover { border-color: var(--salvia); color: var(--salvia); }
 
@@ -152,7 +152,7 @@
   }
   .btn-pri:hover { background: var(--salvia-medio); }
 
-  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: #555552; text-align: center; margin-top: 2rem; }
+  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: #2a2a28; text-align: center; margin-top: 2rem; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
