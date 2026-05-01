@@ -45,10 +45,10 @@
     margin: 0 auto 1.5rem;
   }
   .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; letter-spacing: 0.28em; color: var(--negro); }
-  .sub { font-size: 10px; letter-spacing: 0.18em; color: var(--gris); margin-top: 8px; }
+  .sub { font-size: 10px; letter-spacing: 0.18em; color: #555552; margin-top: 8px; }
 
   .field-wrap { width: 100%; }
-  .field-label { font-size: 10px; letter-spacing: 0.18em; color: var(--gris); margin-bottom: 14px; display: block; }
+  .field-label { font-size: 10px; letter-spacing: 0.18em; color: #555552; margin-bottom: 14px; display: block; }
   .field-input {
     width: 100%; background: transparent; border: none;
     border-bottom: 1px solid var(--borde);
@@ -57,7 +57,7 @@
     color: var(--negro); letter-spacing: 0.22em; text-align: center;
     outline: none; transition: border-color 0.3s;
   }
-  .field-input::placeholder { color: var(--gris-claro); font-size: 13px; letter-spacing: 0.1em; }
+  .field-input::placeholder { color: #555552; font-size: 13px; letter-spacing: 0.1em; }
   .field-input:focus { border-bottom-color: var(--salvia); }
 
   .access-btn {
@@ -70,7 +70,7 @@
   .access-btn:hover { background: var(--salvia); }
 
   .access-error { font-size: 11px; color: #b07060; letter-spacing: 0.08em; text-align: center; margin-top: 1rem; min-height: 16px; }
-  .access-footer { font-size: 10px; color: var(--gris); letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
+  .access-footer { font-size: 10px; color: #555552; letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
   .link-salvia { color: var(--salvia); cursor: pointer; }
 
   /* APP */
@@ -80,9 +80,9 @@
     border-bottom: 0.5px solid var(--borde);
   }
   .app-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.22em; color: var(--negro); }
-  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: var(--gris); text-align: right; line-height: 1.9; }
+  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: #555552; text-align: right; line-height: 1.9; }
 
-  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: var(--gris-claro); text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
+  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: #555552; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
 
   .card-wrap { width: 100%; margin-bottom: 1.25rem; cursor: pointer; }
 
@@ -95,21 +95,21 @@
     position: relative; overflow: hidden;
   }
   .oracle-card:hover { border-color: var(--salvia); background: var(--salvia-palido); }
-  .wm { position: absolute; pointer-events: none; opacity: 0.08; }
-  .wm-br { bottom: -28px; right: -28px; width: 160px; height: 160px; }
-  .wm-tl { top: -28px; left: -28px; width: 100px; height: 100px; opacity: 0.05; }
+  
+  
+  
 
   .card-idle { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
   .idle-icon { width: 54px; height: 54px; }
-  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: var(--gris); }
-  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: var(--gris-claro); }
+  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: #555552; }
+  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: #555552; }
 
   .card-revealed { display: none; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; }
   .r-num { font-size: 9px; letter-spacing: 0.22em; color: var(--salvia); }
   .r-nombre { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--negro); letter-spacing: 0.06em; }
-  .r-area { font-size: 9px; letter-spacing: 0.18em; color: var(--gris); }
+  .r-area { font-size: 9px; letter-spacing: 0.18em; color: #555552; }
   .linea { width: 28px; height: 0.5px; background: var(--salvia); margin: 0.15rem 0; }
-  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #666660; line-height: 1.85; }
+  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #3a3a38; line-height: 1.85; }
 
   .afirmacion-wrap {
     width: 100%; background: white;
@@ -123,7 +123,7 @@
   .after-section { width: 100%; display: none; flex-direction: column; gap: 0.875rem; }
   .after-section.visible { display: flex; }
 
-  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: var(--gris); margin-bottom: 8px; }
+  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: #555552; margin-bottom: 8px; }
   .reflexion-input {
     width: 100%; background: white;
     border: 0.5px solid var(--borde); border-radius: 4px;
@@ -132,7 +132,7 @@
     color: var(--negro); resize: none; min-height: 76px;
     outline: none; transition: border-color 0.3s; line-height: 1.7;
   }
-  .reflexion-input::placeholder { color: var(--gris-claro); }
+  .reflexion-input::placeholder { color: #555552; }
   .reflexion-input:focus { border-color: var(--salvia); }
 
   .btn-row { display: flex; gap: 8px; }
@@ -140,7 +140,7 @@
     flex: 1; padding: 12px; background: white;
     border: 0.5px solid var(--borde); border-radius: 2px;
     font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
-    color: var(--gris); cursor: pointer; transition: border-color 0.3s, color 0.3s;
+    color: #555552; cursor: pointer; transition: border-color 0.3s, color 0.3s;
   }
   .btn-sec:hover { border-color: var(--salvia); color: var(--salvia); }
 
@@ -152,7 +152,7 @@
   }
   .btn-pri:hover { background: var(--salvia-medio); }
 
-  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: var(--gris-claro); text-align: center; margin-top: 2rem; }
+  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: #555552; text-align: center; margin-top: 2rem; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
@@ -216,7 +216,7 @@
   <div class="card-wrap" onclick="revelarCarta()">
     <div class="oracle-card" id="oracle-card">
 
-      <svg class="wm wm-br" viewBox="0 0 160 160" fill="none"><circle cx="80" cy="80" r="78" stroke="#7d9b76" stroke-width="1"/><circle cx="80" cy="80" r="10" stroke="#7d9b76" stroke-width="1" fill="none"/><circle cx="80" cy="14" r="4" fill="#7d9b76"/><circle cx="80" cy="146" r="4" fill="#7d9b76"/><circle cx="14" cy="80" r="4" fill="#7d9b76"/><circle cx="146" cy="80" r="4" fill="#7d9b76"/><line x1="80" y1="20" x2="80" y2="69" stroke="#7d9b76" stroke-width="1"/><line x1="80" y1="91" x2="80" y2="140" stroke="#7d9b76" stroke-width="1"/><line x1="20" y1="80" x2="69" y2="80" stroke="#7d9b76" stroke-width="1"/><line x1="91" y1="80" x2="140" y2="80" stroke="#7d9b76" stroke-width="1"/></svg><svg class="wm wm-tl" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="#7d9b76" stroke-width="1"/><circle cx="50" cy="50" r="7" stroke="#7d9b76" stroke-width="1" fill="none"/><circle cx="50" cy="8" r="3" fill="#7d9b76"/><circle cx="50" cy="92" r="3" fill="#7d9b76"/><circle cx="8" cy="50" r="3" fill="#7d9b76"/><circle cx="92" cy="50" r="3" fill="#7d9b76"/><line x1="50" y1="12" x2="50" y2="42" stroke="#7d9b76" stroke-width="0.8"/><line x1="50" y1="58" x2="50" y2="88" stroke="#7d9b76" stroke-width="0.8"/><line x1="12" y1="50" x2="42" y2="50" stroke="#7d9b76" stroke-width="0.8"/><line x1="58" y1="50" x2="88" y2="50" stroke="#7d9b76" stroke-width="0.8"/></svg><div class="card-idle" id="card-idle">
+      <div class="card-idle" id="card-idle">
         <svg class="idle-icon" viewBox="0 0 54 54" fill="none">
           <circle cx="27" cy="27" r="26" stroke="#a8c2a2" stroke-width="0.5"/>
           <circle cx="27" cy="27" r="3.5" fill="#7d9b76"/>
