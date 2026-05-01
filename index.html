@@ -3,168 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Origen — Vuelve a ti</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Origen</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --blanco: #ffffff;
-    --negro: #0f0f0f;
-    --salvia: #7d9b76;
-    --salvia-medio: #cccccc;
-    --salvia-palido: #eeeeee;
-    --salvia-suave: #f5f5f5;
-    --gris: #333333;
-    --gris-claro: #555555;
-    --borde: #dddddd;
-  }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--blanco);
-    color: var(--negro);
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
+    background: #ffffff;
+    color: #111111;
+    font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .screen { display: none; width: 100%; max-width: 420px; padding: 2.5rem 1.75rem; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; }
+  .screen { display: none; width: 100%; max-width: 400px; padding: 2rem 1.5rem; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; }
   .screen.active { display: flex; }
 
   /* ACCESO */
-  .access-top { text-align: center; margin-bottom: 3.5rem; }
-  .marca-circulo {
-    width: 68px; height: 68px; border-radius: 50%;
-    background: var(--salvia-palido);
-    border: 1px solid #dddddd;
+  .logo-wrap { text-align: center; margin-bottom: 3rem; }
+  .logo-circulo {
+    width: 64px; height: 64px; border-radius: 50%;
+    border: 2px solid #111;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1.25rem;
   }
-  .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; letter-spacing: 0.28em; color: var(--negro); }
-  .sub { font-size: 10px; letter-spacing: 0.18em; color: #0f0f0f; margin-top: 8px; }
+  .logo-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 900;
+    letter-spacing: 0.12em;
+    color: #111;
+  }
 
-  .field-wrap { width: 100%; }
-  .field-label { font-size: 10px; letter-spacing: 0.18em; color: #0f0f0f; margin-bottom: 14px; display: block; }
+  .field-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; color: #888; margin-bottom: 12px; display: block; }
   .field-input {
-    width: 100%; background: transparent; border: none;
-    border-bottom: 1px solid var(--borde);
-    padding: 10px 0;
-    font-family: 'Jost', sans-serif; font-size: 20px; font-weight: 300;
-    color: var(--negro); letter-spacing: 0.22em; text-align: center;
-    outline: none; transition: border-color 0.3s;
+    width: 100%; background: #f5f5f5;
+    border: 2px solid #eee; border-radius: 4px;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 400;
+    color: #111; letter-spacing: 0.15em; text-align: center;
+    outline: none; transition: border-color 0.2s;
   }
-  .field-input::placeholder { color: #0f0f0f; font-size: 13px; letter-spacing: 0.1em; }
-  .field-input:focus { border-bottom-color: #7d9b76; }
+  .field-input::placeholder { color: #bbb; font-size: 14px; letter-spacing: 0.08em; }
+  .field-input:focus { border-color: #111; background: #fff; }
 
   .access-btn {
-    width: 100%; margin-top: 2rem; padding: 15px;
-    background: var(--negro); border: none; border-radius: 2px;
-    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
-    letter-spacing: 0.22em; color: var(--blanco);
-    cursor: pointer; transition: background 0.3s;
+    width: 100%; margin-top: 1.25rem; padding: 16px;
+    background: #111; border: none; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.2em; color: #fff;
+    cursor: pointer; transition: background 0.2s;
   }
-  .access-btn:hover { background: var(--salvia); }
-
-  .access-error { font-size: 11px; color: #b07060; letter-spacing: 0.08em; text-align: center; margin-top: 1rem; min-height: 16px; }
-  .access-footer { font-size: 10px; color: #0f0f0f; letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
-  .link-salvia { color: #7d9b76; cursor: pointer; }
+  .access-btn:hover { background: #7d9b76; }
+  .access-error { font-size: 12px; color: #c0504a; text-align: center; margin-top: 0.75rem; min-height: 18px; font-weight: 500; }
+  .access-footer { font-size: 12px; color: #888; text-align: center; margin-top: 3rem; line-height: 2; }
+  .link-verde { color: #7d9b76; cursor: pointer; font-weight: 500; }
 
   /* APP */
   .app-header {
     width: 100%; display: flex; justify-content: space-between; align-items: center;
-    padding-bottom: 1.25rem; margin-bottom: 2rem;
-    border-bottom: 0.5px solid var(--borde);
+    padding-bottom: 1rem; margin-bottom: 1.5rem;
+    border-bottom: 2px solid #111;
   }
-  .app-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.22em; color: var(--negro); }
-  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: #0f0f0f; text-align: right; line-height: 1.9; }
+  .app-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 900; letter-spacing: 0.1em; color: #111;
+  }
+  .app-fecha { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.8; text-transform: uppercase; }
 
-  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: #0f0f0f; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
+  .tap-hint { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #aaa; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.3s; text-transform: uppercase; }
 
-  .card-wrap { width: 100%; margin-bottom: 1.25rem; cursor: pointer; }
+  .card-wrap { width: 100%; margin-bottom: 1rem; cursor: pointer; }
 
   .oracle-card {
-    width: 100%; background: #f8f8f8;
-    border: 1px solid #dddddd; border-radius: 6px;
-    padding: 2.5rem 2rem; min-height: 300px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; transition: border-color 0.3s, background 0.3s;
-    position: relative; overflow: hidden;
+    width: 100%;
+    background: #fff;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 2.5rem 1.75rem;
+    min-height: 320px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    transition: background 0.2s;
+    position: relative;
   }
-  .oracle-card:hover { border-color: #7d9b76; background: var(--salvia-palido); }
-  
-  
-  
+  .oracle-card:hover { background: #f9f9f9; }
+
+  /* Tag arriba derecha como en la foto */
+  .card-tag {
+    position: absolute; top: 14px; right: 14px;
+    background: #7d9b76; color: #fff;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.16em;
+    padding: 4px 10px; border-radius: 20px;
+    text-transform: uppercase;
+  }
 
   .card-idle { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
-  .idle-icon { width: 54px; height: 54px; }
-  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: #0f0f0f; }
-  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: #0f0f0f; }
-
-  .card-revealed { display: none; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; }
-  .r-num { font-size: 9px; letter-spacing: 0.22em; color: #7d9b76; }
-  .r-nombre { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--negro); letter-spacing: 0.06em; }
-  .r-area { font-size: 9px; letter-spacing: 0.18em; color: #0f0f0f; }
-  .linea { width: 28px; height: 0.5px; background: var(--salvia); margin: 0.15rem 0; }
-  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #0f0f0f; line-height: 1.85; }
-
-  .afirmacion-wrap {
-    width: 100%; background: white;
-    border-radius: 4px; border: 0.5px solid var(--borde);
-    padding: 1rem 1.25rem; margin-top: 0.25rem;
+  .idle-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; font-weight: 900; color: #111; line-height: 1;
   }
-  .afirmacion-label { font-size: 8px; letter-spacing: 0.22em; color: #7d9b76; margin-bottom: 7px; }
-  .afirmacion-text { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--negro); line-height: 1.65; }
+  .idle-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-style: italic; color: #555; line-height: 1.6;
+  }
+  .idle-hint { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; color: #bbb; text-transform: uppercase; }
+
+  .card-revealed { display: none; flex-direction: column; align-items: center; gap: 1rem; width: 100%; }
+  .r-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px; font-weight: 900; color: #111; line-height: 1;
+  }
+  .r-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: #111; letter-spacing: 0.04em;
+  }
+  .r-area { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #7d9b76; text-transform: uppercase; }
+  .linea { width: 40px; height: 2px; background: #111; margin: 0.25rem 0; }
+  .r-mensaje {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-style: italic; color: #333;
+    line-height: 1.75; padding: 0 0.25rem;
+  }
+  .afirmacion-wrap {
+    width: 100%; background: #f5f5f5;
+    border-radius: 6px; padding: 1rem 1.25rem; margin-top: 0.5rem;
+  }
+  .afirmacion-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: #7d9b76; margin-bottom: 6px; text-transform: uppercase; }
+  .afirmacion-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700; color: #111; line-height: 1.6;
+  }
 
   /* AFTER */
   .after-section { width: 100%; display: none; flex-direction: column; gap: 0.875rem; }
   .after-section.visible { display: flex; }
 
-  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: #0f0f0f; margin-bottom: 8px; }
+  .reflexion-label { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; color: #888; margin-bottom: 8px; text-transform: uppercase; }
   .reflexion-input {
-    width: 100%; background: white;
-    border: 0.5px solid var(--borde); border-radius: 4px;
+    width: 100%; background: #f5f5f5;
+    border: 2px solid #eee; border-radius: 6px;
     padding: 12px 14px;
-    font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic;
-    color: var(--negro); resize: none; min-height: 76px;
-    outline: none; transition: border-color 0.3s; line-height: 1.7;
+    font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic;
+    color: #111; resize: none; min-height: 76px;
+    outline: none; transition: border-color 0.2s; line-height: 1.7;
   }
-  .reflexion-input::placeholder { color: #0f0f0f; }
-  .reflexion-input:focus { border-color: #7d9b76; }
+  .reflexion-input::placeholder { color: #bbb; }
+  .reflexion-input:focus { border-color: #111; }
 
-  .btn-row { display: flex; gap: 8px; }
-  .btn-sec {
-    flex: 1; padding: 12px; background: white;
-    border: 0.5px solid var(--borde); border-radius: 2px;
-    font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
-    color: #0f0f0f; cursor: pointer; transition: border-color 0.3s, color 0.3s;
+  .btn-nueva {
+    width: 100%; padding: 15px;
+    background: #fff; border: 2px solid #111; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.18em; color: #111; cursor: pointer;
+    transition: background 0.2s; text-transform: uppercase;
   }
-  .btn-sec:hover { border-color: #7d9b76; color: #7d9b76; }
+  .btn-nueva:hover { background: #f0f0f0; }
 
-  .btn-pri {
-    flex: 1; padding: 12px; background: var(--salvia-palido);
-    border: 1px solid #dddddd; border-radius: 2px;
-    font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
-    color: var(--negro); cursor: pointer; transition: background 0.3s;
-  }
-  .btn-pri:hover { background: var(--salvia-medio); }
-
-  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: #0f0f0f; text-align: center; margin-top: 2rem; }
+  .app-footer { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; color: #ccc; text-align: center; margin-top: 1.5rem; text-transform: uppercase; }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .fade-up { animation: fadeUp 0.65s ease forwards; }
+  .fade-up { animation: fadeUp 0.5s ease forwards; }
 
   .toast {
     position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
-    background: var(--negro); color: var(--blanco);
-    font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.12em;
-    padding: 10px 22px; border-radius: 2px;
+    background: #111; color: #fff;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; padding: 10px 22px; border-radius: 4px;
     opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap;
   }
   .toast.show { opacity: 1; }
@@ -174,25 +184,25 @@
 
 <!-- ACCESO -->
 <div class="screen active" id="screen-access">
-  <div class="access-top">
-    <div class="marca-circulo">
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-        <circle cx="17" cy="17" r="3.5" fill="#7d9b76"/>
-        <circle cx="17" cy="4" r="1.8" fill="#a8c2a2"/>
-        <circle cx="17" cy="30" r="1.8" fill="#a8c2a2"/>
-        <circle cx="4" cy="17" r="1.8" fill="#a8c2a2"/>
-        <circle cx="30" cy="17" r="1.8" fill="#a8c2a2"/>
-        <line x1="17" y1="7" x2="17" y2="13" stroke="#a8c2a2" stroke-width="0.5"/>
-        <line x1="17" y1="21" x2="17" y2="27" stroke="#a8c2a2" stroke-width="0.5"/>
-        <line x1="7" y1="17" x2="13" y2="17" stroke="#a8c2a2" stroke-width="0.5"/>
-        <line x1="21" y1="17" x2="27" y2="17" stroke="#a8c2a2" stroke-width="0.5"/>
+  <div class="logo-wrap">
+    <div class="logo-circulo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <circle cx="15" cy="15" r="3" fill="#111"/>
+        <circle cx="15" cy="4" r="1.5" fill="#111"/>
+        <circle cx="15" cy="26" r="1.5" fill="#111"/>
+        <circle cx="4" cy="15" r="1.5" fill="#111"/>
+        <circle cx="26" cy="15" r="1.5" fill="#111"/>
+        <line x1="15" y1="6" x2="15" y2="12" stroke="#111" stroke-width="1"/>
+        <line x1="15" y1="18" x2="15" y2="24" stroke="#111" stroke-width="1"/>
+        <line x1="6" y1="15" x2="12" y2="15" stroke="#111" stroke-width="1"/>
+        <line x1="18" y1="15" x2="24" y2="15" stroke="#111" stroke-width="1"/>
       </svg>
     </div>
-    <div class="wordmark">ORIGEN</div>
+    <div class="logo-word">ORIGEN</div>
   </div>
 
-  <div class="field-wrap">
-    <label class="field-label">CÓDIGO DE ACCESO</label>
+  <div style="width:100%">
+    <label class="field-label">Código de acceso</label>
     <input class="field-input" id="codigo-input" type="text" placeholder="ingresa tu código" autocomplete="off" spellcheck="false">
     <div class="access-error" id="access-error"></div>
     <button class="access-btn" onclick="verificarCodigo()">ENTRAR</button>
@@ -200,7 +210,7 @@
 
   <div class="access-footer">
     ¿Aún no tienes acceso?<br>
-    <span class="link-salvia" onclick="alert('Próximamente en origen.app')">Obtén el tuyo aquí</span>
+    <span class="link-verde" onclick="alert('Próximamente en origen.app')">Obtén el tuyo aquí</span>
   </div>
 </div>
 
@@ -211,51 +221,39 @@
     <div class="app-fecha" id="app-fecha"></div>
   </div>
 
-  <p class="tap-hint" id="tap-hint">TOCA PARA RECIBIR TU MENSAJE DE HOY</p>
+  <p class="tap-hint" id="tap-hint">Toca para recibir tu mensaje</p>
 
   <div class="card-wrap" onclick="revelarCarta()">
     <div class="oracle-card" id="oracle-card">
+      <div class="card-tag" id="card-tag-idle">Oráculo diario</div>
 
       <div class="card-idle" id="card-idle">
-        <svg class="idle-icon" viewBox="0 0 54 54" fill="none">
-          <circle cx="27" cy="27" r="26" stroke="#a8c2a2" stroke-width="0.5"/>
-          <circle cx="27" cy="27" r="3.5" fill="#7d9b76"/>
-          <circle cx="27" cy="7" r="2" fill="#c4d9c0"/>
-          <circle cx="27" cy="47" r="2" fill="#c4d9c0"/>
-          <circle cx="7" cy="27" r="2" fill="#c4d9c0"/>
-          <circle cx="47" cy="27" r="2" fill="#c4d9c0"/>
-          <line x1="27" y1="10" x2="27" y2="23" stroke="#c4d9c0" stroke-width="0.5"/>
-          <line x1="27" y1="31" x2="27" y2="44" stroke="#c4d9c0" stroke-width="0.5"/>
-          <line x1="10" y1="27" x2="23" y2="27" stroke="#c4d9c0" stroke-width="0.5"/>
-          <line x1="31" y1="27" x2="44" y2="27" stroke="#c4d9c0" stroke-width="0.5"/>
-        </svg>
-        <div class="idle-text">el universo ya eligió tu mensaje</div>
+        <div class="idle-num" id="idle-num">?</div>
+        <div class="idle-text">el universo ya eligió<br>tu mensaje de hoy</div>
         <div class="idle-hint">— presiona para revelar —</div>
       </div>
 
       <div class="card-revealed" id="card-revealed">
+        <div class="card-tag" style="position:absolute;top:14px;right:14px;background:#7d9b76;color:#fff;font-size:9px;font-weight:500;letter-spacing:0.16em;padding:4px 10px;border-radius:20px;" id="r-area-tag"></div>
         <div class="r-num" id="r-num"></div>
         <div class="r-nombre" id="r-nombre"></div>
         <div class="r-area" id="r-area"></div>
         <div class="linea"></div>
         <div class="r-mensaje" id="r-mensaje"></div>
         <div class="afirmacion-wrap">
-          <div class="afirmacion-label">AFIRMACIÓN DEL DÍA</div>
+          <div class="afirmacion-label">Afirmación del día</div>
           <div class="afirmacion-text" id="r-afirmacion"></div>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="after-section" id="after-section">
     <div>
-      <div class="reflexion-label">ESPACIO DE REFLEXIÓN</div>
+      <div class="reflexion-label">Espacio de reflexión</div>
       <textarea class="reflexion-input" placeholder="¿qué te resonó de este mensaje?..." rows="3"></textarea>
     </div>
-    <div class="btn-row">
-      <button class="btn-pri" style="flex:1" onclick="nuevaLectura()">NUEVA LECTURA ↻</button>
-    </div>
+    <button class="btn-nueva" onclick="nuevaLectura()">Nueva lectura ↻</button>
   </div>
 
   <div class="app-footer">#vuelveatorigen</div>
@@ -267,18 +265,19 @@
   const CODIGOS = ["ORIGEN2025", "BARRAS01", "YALUZ"];
 
   const PUNTOS = [
-    { num: "PUNTO 01", nombre: "Dinero", area: "abundancia · flujo", mensaje: "La abundancia no es algo que persigues. Es algo que permites cuando dejas de creer que no mereces recibirla.", afirmacion: "Recibo con facilidad todo lo que el universo tiene para mí, ahora y siempre." },
-    { num: "PUNTO 05", nombre: "Creatividad", area: "creación · expresión", mensaje: "Tu creatividad no necesita permiso ni validación. Ya existe. Solo necesita espacio para fluir sin ser juzgada.", afirmacion: "Soy un canal abierto para ideas que transforman mi mundo y el de los demás." },
-    { num: "PUNTO 09", nombre: "Cuerpo", area: "bienestar · presencia", mensaje: "Tu cuerpo sabe más de lo que tu mente cree. Detente hoy y escúchalo. Una señal pequeña puede cambiarlo todo.", afirmacion: "Mi cuerpo es mi aliado más sabio. Lo honro, lo escucho, lo cuido." },
-    { num: "PUNTO 12", nombre: "Control", area: "libertad · soltar", mensaje: "¿Y si el control fuera solo un punto de vista que puedes elegir soltar? La vida fluye mejor cuando dejas de aferrarte a cómo debería ser.", afirmacion: "Confío en el flujo de mi vida y me permito ser sin resistencia." },
-    { num: "PUNTO 17", nombre: "Esperanza", area: "posibilidad · visión", mensaje: "La esperanza no es ingenua — es un acto de valentía. Elige hoy ver la posibilidad donde otros solo ven un límite.", afirmacion: "Elijo la posibilidad por encima de la certeza. Siempre hay otra forma." },
-    { num: "PUNTO 21", nombre: "Gratitud", area: "presencia · reconocimiento", mensaje: "Gratitud no es solo agradecer lo bueno. Es reconocer que incluso lo difícil te lleva hacia quien estás destinada a ser.", afirmacion: "Gracias por todo lo que soy, todo lo que tengo y todo lo que estoy creando." },
-    { num: "PUNTO 25", nombre: "Paz", area: "calma · centro", mensaje: "La paz que buscas afuera ya existe dentro de ti. Hoy no tienes que buscarla — solo recuerda que siempre estuvo ahí.", afirmacion: "Soy paz. La irradio, la vivo, la elijo en cada momento." },
-    { num: "PUNTO 29", nombre: "Vitalidad", area: "energía · fuerza", mensaje: "Tu energía es tu recurso más poderoso. Cuida hoy a quién y qué la recibe. No toda puerta merece que la abras.", afirmacion: "Mi energía es sagrada. La dirijo con consciencia hacia lo que me expande." },
-    { num: "PUNTO 32", nombre: "Consciencia", area: "expansión · ser", mensaje: "Hoy eres más consciente que ayer. Eso es suficiente. La consciencia no se mide — se vive, se siente, se elige.", afirmacion: "Me expando más allá de lo que creía posible. Soy más de lo que pienso." }
+    { num: "1.", nombre: "Dinero", area: "Abundancia", mensaje: "La abundancia no es algo que persigues. Es algo que permites cuando dejas de creer que no mereces recibirla.", afirmacion: "Recibo con facilidad todo lo que el universo tiene para mí, ahora y siempre." },
+    { num: "5.", nombre: "Creatividad", area: "Creación", mensaje: "Tu creatividad no necesita permiso ni validación. Ya existe. Solo necesita espacio para fluir sin ser juzgada.", afirmacion: "Soy un canal abierto para ideas que transforman mi mundo y el de los demás." },
+    { num: "9.", nombre: "Cuerpo", area: "Bienestar", mensaje: "Tu cuerpo sabe más de lo que tu mente cree. Detente hoy y escúchalo. Una señal pequeña puede cambiarlo todo.", afirmacion: "Mi cuerpo es mi aliado más sabio. Lo honro, lo escucho, lo cuido." },
+    { num: "12.", nombre: "Control", area: "Libertad", mensaje: "¿Y si el control fuera solo un punto de vista que puedes elegir soltar? La vida fluye mejor cuando dejas de aferrarte a cómo debería ser.", afirmacion: "Confío en el flujo de mi vida y me permito ser sin resistencia." },
+    { num: "17.", nombre: "Esperanza", area: "Posibilidad", mensaje: "La esperanza no es ingenua — es un acto de valentía. Elige hoy ver la posibilidad donde otros solo ven un límite.", afirmacion: "Elijo la posibilidad por encima de la certeza. Siempre hay otra forma." },
+    { num: "21.", nombre: "Gratitud", area: "Presencia", mensaje: "Gratitud no es solo agradecer lo bueno. Es reconocer que incluso lo difícil te lleva hacia quien estás destinada a ser.", afirmacion: "Gracias por todo lo que soy, todo lo que tengo y todo lo que estoy creando." },
+    { num: "25.", nombre: "Paz", area: "Calma", mensaje: "La paz que buscas afuera ya existe dentro de ti. Hoy no tienes que buscarla — solo recuerda que siempre estuvo ahí.", afirmacion: "Soy paz. La irradio, la vivo, la elijo en cada momento." },
+    { num: "29.", nombre: "Vitalidad", area: "Energía", mensaje: "Tu energía es tu recurso más poderoso. Cuida hoy a quién y qué la recibe. No toda puerta merece que la abras.", afirmacion: "Mi energía es sagrada. La dirijo con consciencia hacia lo que me expande." },
+    { num: "32.", nombre: "Consciencia", area: "Expansión", mensaje: "Hoy eres más consciente que ayer. Eso es suficiente. La consciencia no se mide — se vive, se siente, se elige.", afirmacion: "Me expando más allá de lo que creía posible. Soy más de lo que pienso." }
   ];
 
   let revealed = false;
+  let puntoActual = null;
 
   function verificarCodigo() {
     const val = document.getElementById('codigo-input').value.trim().toUpperCase();
@@ -287,8 +286,9 @@
       document.getElementById('screen-access').classList.remove('active');
       document.getElementById('screen-app').classList.add('active');
       setFecha();
+      setIdleNum();
     } else {
-      err.textContent = 'código no válido — verifica e intenta de nuevo';
+      err.textContent = 'Código no válido — verifica e intenta de nuevo';
       setTimeout(() => err.textContent = '', 3000);
     }
   }
@@ -297,22 +297,32 @@
 
   function setFecha() {
     const d = new Date();
-    const dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
-    const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    document.getElementById('app-fecha').innerHTML = `${dias[d.getDay()]}<br>${d.getDate()} de ${meses[d.getMonth()]}`;
+    const dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    document.getElementById('app-fecha').innerHTML = `${dias[d.getDay()]}<br>${d.getDate()} ${meses[d.getMonth()]}`;
+  }
+
+  function getPunto() {
+    return PUNTOS[Math.floor(Math.random() * PUNTOS.length)];
+  }
+
+  function setIdleNum() {
+    puntoActual = getPunto();
+    document.getElementById('idle-num').textContent = puntoActual.num;
   }
 
   function revelarCarta() {
     if (revealed) return;
     revealed = true;
-    const d = new Date();
-    const p = PUNTOS[(d.getDate() + d.getMonth()) % PUNTOS.length];
+    const p = puntoActual;
     document.getElementById('r-num').textContent = p.num;
     document.getElementById('r-nombre').textContent = p.nombre;
-    document.getElementById('r-area').textContent = p.area;
+    document.getElementById('r-area').textContent = p.area.toUpperCase();
+    document.getElementById('r-area-tag').textContent = p.area;
     document.getElementById('r-mensaje').textContent = p.mensaje;
     document.getElementById('r-afirmacion').textContent = p.afirmacion;
     document.getElementById('card-idle').style.display = 'none';
+    document.getElementById('card-tag-idle').style.display = 'none';
     const rev = document.getElementById('card-revealed');
     rev.style.display = 'flex';
     rev.classList.add('fade-up');
@@ -321,24 +331,18 @@
     document.getElementById('oracle-card').style.cursor = 'default';
   }
 
-  function guardar() { mostrarToast('reflexión guardada ✓'); }
-
   function nuevaLectura() {
     revealed = false;
+    puntoActual = getPunto();
+    document.getElementById('idle-num').textContent = puntoActual.num;
     document.getElementById('card-idle').style.display = 'flex';
+    document.getElementById('card-tag-idle').style.display = 'block';
     const rev = document.getElementById('card-revealed');
     rev.style.display = 'none';
     rev.classList.remove('fade-up');
     document.getElementById('after-section').classList.remove('visible');
     document.getElementById('tap-hint').style.opacity = '1';
     document.getElementById('oracle-card').style.cursor = 'pointer';
-  }
-
-  function mostrarToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
   }
 </script>
 </body>
