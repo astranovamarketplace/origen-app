@@ -7,15 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --blanco: #faf9f6;
-    --negro: #1a1a18;
+    --blanco: #ffffff;
+    --negro: #0f0f0f;
     --salvia: #7d9b76;
-    --salvia-medio: #7d9b76;
-    --salvia-palido: #c8ddc4;
-    --salvia-suave: #ddeedd;
-    --gris: #444440;
-    --gris-claro: #666660;
-    --borde: #e2dfd8;
+    --salvia-medio: #cccccc;
+    --salvia-palido: #eeeeee;
+    --salvia-suave: #f5f5f5;
+    --gris: #333333;
+    --gris-claro: #555555;
+    --borde: #dddddd;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,15 +40,15 @@
   .marca-circulo {
     width: 68px; height: 68px; border-radius: 50%;
     background: var(--salvia-palido);
-    border: 0.5px solid var(--salvia-medio);
+    border: 1px solid #dddddd;
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 1.5rem;
   }
   .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; letter-spacing: 0.28em; color: var(--negro); }
-  .sub { font-size: 10px; letter-spacing: 0.18em; color: #2a2a28; margin-top: 8px; }
+  .sub { font-size: 10px; letter-spacing: 0.18em; color: #0f0f0f; margin-top: 8px; }
 
   .field-wrap { width: 100%; }
-  .field-label { font-size: 10px; letter-spacing: 0.18em; color: #2a2a28; margin-bottom: 14px; display: block; }
+  .field-label { font-size: 10px; letter-spacing: 0.18em; color: #0f0f0f; margin-bottom: 14px; display: block; }
   .field-input {
     width: 100%; background: transparent; border: none;
     border-bottom: 1px solid var(--borde);
@@ -57,8 +57,8 @@
     color: var(--negro); letter-spacing: 0.22em; text-align: center;
     outline: none; transition: border-color 0.3s;
   }
-  .field-input::placeholder { color: #2a2a28; font-size: 13px; letter-spacing: 0.1em; }
-  .field-input:focus { border-bottom-color: var(--salvia); }
+  .field-input::placeholder { color: #0f0f0f; font-size: 13px; letter-spacing: 0.1em; }
+  .field-input:focus { border-bottom-color: #7d9b76; }
 
   .access-btn {
     width: 100%; margin-top: 2rem; padding: 15px;
@@ -70,8 +70,8 @@
   .access-btn:hover { background: var(--salvia); }
 
   .access-error { font-size: 11px; color: #b07060; letter-spacing: 0.08em; text-align: center; margin-top: 1rem; min-height: 16px; }
-  .access-footer { font-size: 10px; color: #2a2a28; letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
-  .link-salvia { color: var(--salvia); cursor: pointer; }
+  .access-footer { font-size: 10px; color: #0f0f0f; letter-spacing: 0.1em; text-align: center; margin-top: 4rem; line-height: 2.4; }
+  .link-salvia { color: #7d9b76; cursor: pointer; }
 
   /* APP */
   .app-header {
@@ -80,50 +80,50 @@
     border-bottom: 0.5px solid var(--borde);
   }
   .app-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.22em; color: var(--negro); }
-  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: #2a2a28; text-align: right; line-height: 1.9; }
+  .app-fecha { font-size: 10px; letter-spacing: 0.1em; color: #0f0f0f; text-align: right; line-height: 1.9; }
 
-  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: #2a2a28; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
+  .tap-hint { font-size: 9px; letter-spacing: 0.18em; color: #0f0f0f; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.4s; }
 
   .card-wrap { width: 100%; margin-bottom: 1.25rem; cursor: pointer; }
 
   .oracle-card {
-    width: 100%; background: var(--salvia-suave);
-    border: 0.5px solid var(--salvia-medio); border-radius: 6px;
+    width: 100%; background: #f8f8f8;
+    border: 1px solid #dddddd; border-radius: 6px;
     padding: 2.5rem 2rem; min-height: 300px;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; transition: border-color 0.3s, background 0.3s;
     position: relative; overflow: hidden;
   }
-  .oracle-card:hover { border-color: var(--salvia); background: var(--salvia-palido); }
+  .oracle-card:hover { border-color: #7d9b76; background: var(--salvia-palido); }
   
   
   
 
   .card-idle { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
   .idle-icon { width: 54px; height: 54px; }
-  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: #2a2a28; }
-  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: #2a2a28; }
+  .idle-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: #0f0f0f; }
+  .idle-hint { font-size: 9px; letter-spacing: 0.16em; color: #0f0f0f; }
 
   .card-revealed { display: none; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; }
-  .r-num { font-size: 9px; letter-spacing: 0.22em; color: var(--salvia); }
+  .r-num { font-size: 9px; letter-spacing: 0.22em; color: #7d9b76; }
   .r-nombre { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--negro); letter-spacing: 0.06em; }
-  .r-area { font-size: 9px; letter-spacing: 0.18em; color: #2a2a28; }
+  .r-area { font-size: 9px; letter-spacing: 0.18em; color: #0f0f0f; }
   .linea { width: 28px; height: 0.5px; background: var(--salvia); margin: 0.15rem 0; }
-  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #1a1a18; line-height: 1.85; }
+  .r-mensaje { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #0f0f0f; line-height: 1.85; }
 
   .afirmacion-wrap {
     width: 100%; background: white;
     border-radius: 4px; border: 0.5px solid var(--borde);
     padding: 1rem 1.25rem; margin-top: 0.25rem;
   }
-  .afirmacion-label { font-size: 8px; letter-spacing: 0.22em; color: var(--salvia); margin-bottom: 7px; }
+  .afirmacion-label { font-size: 8px; letter-spacing: 0.22em; color: #7d9b76; margin-bottom: 7px; }
   .afirmacion-text { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--negro); line-height: 1.65; }
 
   /* AFTER */
   .after-section { width: 100%; display: none; flex-direction: column; gap: 0.875rem; }
   .after-section.visible { display: flex; }
 
-  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: #2a2a28; margin-bottom: 8px; }
+  .reflexion-label { font-size: 10px; letter-spacing: 0.14em; color: #0f0f0f; margin-bottom: 8px; }
   .reflexion-input {
     width: 100%; background: white;
     border: 0.5px solid var(--borde); border-radius: 4px;
@@ -132,27 +132,27 @@
     color: var(--negro); resize: none; min-height: 76px;
     outline: none; transition: border-color 0.3s; line-height: 1.7;
   }
-  .reflexion-input::placeholder { color: #2a2a28; }
-  .reflexion-input:focus { border-color: var(--salvia); }
+  .reflexion-input::placeholder { color: #0f0f0f; }
+  .reflexion-input:focus { border-color: #7d9b76; }
 
   .btn-row { display: flex; gap: 8px; }
   .btn-sec {
     flex: 1; padding: 12px; background: white;
     border: 0.5px solid var(--borde); border-radius: 2px;
     font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
-    color: #2a2a28; cursor: pointer; transition: border-color 0.3s, color 0.3s;
+    color: #0f0f0f; cursor: pointer; transition: border-color 0.3s, color 0.3s;
   }
-  .btn-sec:hover { border-color: var(--salvia); color: var(--salvia); }
+  .btn-sec:hover { border-color: #7d9b76; color: #7d9b76; }
 
   .btn-pri {
     flex: 1; padding: 12px; background: var(--salvia-palido);
-    border: 0.5px solid var(--salvia-medio); border-radius: 2px;
+    border: 1px solid #dddddd; border-radius: 2px;
     font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em;
     color: var(--negro); cursor: pointer; transition: background 0.3s;
   }
   .btn-pri:hover { background: var(--salvia-medio); }
 
-  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: #2a2a28; text-align: center; margin-top: 2rem; }
+  .app-footer { font-size: 9px; letter-spacing: 0.12em; color: #0f0f0f; text-align: center; margin-top: 2rem; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
@@ -254,8 +254,7 @@
       <textarea class="reflexion-input" placeholder="¿qué te resonó de este mensaje?..." rows="3"></textarea>
     </div>
     <div class="btn-row">
-      <button class="btn-sec" onclick="guardar()">GUARDAR</button>
-      <button class="btn-pri" onclick="nuevaLectura()">NUEVA LECTURA ↻</button>
+      <button class="btn-pri" style="flex:1" onclick="nuevaLectura()">NUEVA LECTURA ↻</button>
     </div>
   </div>
 
