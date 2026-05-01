@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: #ffffff;
     color: #111111;
@@ -17,7 +16,6 @@
     align-items: center;
     justify-content: center;
   }
-
   .screen { display: none; width: 100%; max-width: 400px; padding: 2rem 1.5rem; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; }
   .screen.active { display: flex; }
 
@@ -29,14 +27,9 @@
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 1.25rem;
   }
-  .logo-word {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px; font-weight: 900;
-    letter-spacing: 0.12em;
-    color: #111;
-  }
+  .logo-word { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; letter-spacing: 0.12em; color: #111; }
 
-  .field-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; color: #888; margin-bottom: 12px; display: block; }
+  .field-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; color: #888; margin-bottom: 12px; display: block; text-transform: uppercase; }
   .field-input {
     width: 100%; background: #f5f5f5;
     border: 2px solid #eee; border-radius: 4px;
@@ -47,13 +40,12 @@
   }
   .field-input::placeholder { color: #bbb; font-size: 14px; letter-spacing: 0.08em; }
   .field-input:focus { border-color: #111; background: #fff; }
-
   .access-btn {
     width: 100%; margin-top: 1.25rem; padding: 16px;
     background: #111; border: none; border-radius: 4px;
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
-    letter-spacing: 0.2em; color: #fff;
-    cursor: pointer; transition: background 0.2s;
+    letter-spacing: 0.2em; color: #fff; cursor: pointer; transition: background 0.2s;
+    text-transform: uppercase;
   }
   .access-btn:hover { background: #7d9b76; }
   .access-error { font-size: 12px; color: #c0504a; text-align: center; margin-top: 0.75rem; min-height: 18px; font-weight: 500; }
@@ -66,92 +58,55 @@
     padding-bottom: 1rem; margin-bottom: 1.5rem;
     border-bottom: 2px solid #111;
   }
-  .app-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px; font-weight: 900; letter-spacing: 0.1em; color: #111;
-  }
+  .app-logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; letter-spacing: 0.1em; color: #111; }
   .app-fecha { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.8; text-transform: uppercase; }
 
-  .tap-hint { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #aaa; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.3s; text-transform: uppercase; }
+  .tap-hint { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; color: #aaa; text-align: center; margin-bottom: 0.75rem; transition: opacity 0.3s; text-transform: uppercase; }
 
   .card-wrap { width: 100%; margin-bottom: 1rem; cursor: pointer; }
-
   .oracle-card {
-    width: 100%;
-    background: #fff;
-    border: 2px solid #111;
-    border-radius: 8px;
-    padding: 2.5rem 1.75rem;
-    min-height: 320px;
+    width: 100%; background: #fff;
+    border: 2px solid #111; border-radius: 8px;
+    padding: 2.5rem 1.75rem; min-height: 340px;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    text-align: center;
-    transition: background 0.2s;
+    text-align: center; transition: background 0.2s;
     position: relative;
   }
-  .oracle-card:hover { background: #f9f9f9; }
+  .oracle-card:hover { background: #fafafa; }
 
-  /* Tag arriba derecha como en la foto */
   .card-tag {
     position: absolute; top: 14px; right: 14px;
     background: #7d9b76; color: #fff;
-    font-size: 9px; font-weight: 500; letter-spacing: 0.16em;
-    padding: 4px 10px; border-radius: 20px;
-    text-transform: uppercase;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.14em;
+    padding: 4px 10px; border-radius: 20px; text-transform: uppercase;
   }
 
-  .card-idle { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
-  .idle-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 64px; font-weight: 900; color: #111; line-height: 1;
-  }
-  .idle-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px; font-style: italic; color: #555; line-height: 1.6;
-  }
+  /* SIMBOLO DECORATIVO */
+  .simbolo { margin-bottom: 1rem; }
+
+  .card-idle { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .idle-text { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: #555; line-height: 1.6; }
   .idle-hint { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; color: #bbb; text-transform: uppercase; }
 
-  .card-revealed { display: none; flex-direction: column; align-items: center; gap: 1rem; width: 100%; }
-  .r-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 72px; font-weight: 900; color: #111; line-height: 1;
-  }
-  .r-nombre {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px; font-weight: 700; color: #111; letter-spacing: 0.04em;
-  }
-  .r-area { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #7d9b76; text-transform: uppercase; }
-  .linea { width: 40px; height: 2px; background: #111; margin: 0.25rem 0; }
-  .r-mensaje {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px; font-style: italic; color: #333;
-    line-height: 1.75; padding: 0 0.25rem;
-  }
-  .afirmacion-wrap {
-    width: 100%; background: #f5f5f5;
-    border-radius: 6px; padding: 1rem 1.25rem; margin-top: 0.5rem;
-  }
+  .card-revealed { display: none; flex-direction: column; align-items: center; gap: 0.9rem; width: 100%; }
+  .r-nombre { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 900; color: #111; letter-spacing: 0.04em; }
+  .r-area { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; color: #7d9b76; text-transform: uppercase; }
+  .linea { width: 40px; height: 2px; background: #111; margin: 0.1rem 0; }
+  .r-mensaje { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: #333; line-height: 1.8; }
+
+  .afirmacion-wrap { width: 100%; background: #111; border-radius: 6px; padding: 1rem 1.25rem; margin-top: 0.5rem; }
   .afirmacion-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: #7d9b76; margin-bottom: 6px; text-transform: uppercase; }
-  .afirmacion-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px; font-weight: 700; color: #111; line-height: 1.6;
-  }
+  .afirmacion-text { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #ffffff; line-height: 1.6; }
+
+  /* PREGUNTA ACCESS */
+  .pregunta-wrap { width: 100%; background: #f5f5f5; border-left: 3px solid #7d9b76; border-radius: 0 6px 6px 0; padding: 1rem 1.25rem; }
+  .pregunta-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: #7d9b76; margin-bottom: 8px; text-transform: uppercase; }
+  .pregunta-text { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; color: #111; line-height: 1.7; font-weight: 700; }
 
   /* AFTER */
   .after-section { width: 100%; display: none; flex-direction: column; gap: 0.875rem; }
   .after-section.visible { display: flex; }
-
-  .reflexion-label { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; color: #888; margin-bottom: 8px; text-transform: uppercase; }
-  .reflexion-input {
-    width: 100%; background: #f5f5f5;
-    border: 2px solid #eee; border-radius: 6px;
-    padding: 12px 14px;
-    font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic;
-    color: #111; resize: none; min-height: 76px;
-    outline: none; transition: border-color 0.2s; line-height: 1.7;
-  }
-  .reflexion-input::placeholder { color: #bbb; }
-  .reflexion-input:focus { border-color: #111; }
 
   .btn-nueva {
     width: 100%; padding: 15px;
@@ -162,22 +117,13 @@
   }
   .btn-nueva:hover { background: #f0f0f0; }
 
-  .app-footer { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; color: #ccc; text-align: center; margin-top: 1.5rem; text-transform: uppercase; }
+  .app-footer { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; color: #bbb; text-align: center; margin-top: 1.5rem; text-transform: uppercase; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .fade-up { animation: fadeUp 0.5s ease forwards; }
-
-  .toast {
-    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
-    background: #111; color: #fff;
-    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
-    letter-spacing: 0.1em; padding: 10px 22px; border-radius: 4px;
-    opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap;
-  }
-  .toast.show { opacity: 1; }
 </style>
 </head>
 <body>
@@ -200,14 +146,12 @@
     </div>
     <div class="logo-word">ORIGEN</div>
   </div>
-
   <div style="width:100%">
     <label class="field-label">Código de acceso</label>
     <input class="field-input" id="codigo-input" type="text" placeholder="ingresa tu código" autocomplete="off" spellcheck="false">
     <div class="access-error" id="access-error"></div>
-    <button class="access-btn" onclick="verificarCodigo()">ENTRAR</button>
+    <button class="access-btn" onclick="verificarCodigo()">Entrar</button>
   </div>
-
   <div class="access-footer">
     ¿Aún no tienes acceso?<br>
     <span class="link-verde" onclick="alert('Próximamente en origen.app')">Obtén el tuyo aquí</span>
@@ -225,17 +169,46 @@
 
   <div class="card-wrap" onclick="revelarCarta()">
     <div class="oracle-card" id="oracle-card">
-      <div class="card-tag" id="card-tag-idle">Oráculo diario</div>
+      <div class="card-tag" id="card-tag">Oráculo diario</div>
 
       <div class="card-idle" id="card-idle">
-        <div class="idle-num" id="idle-num">?</div>
+        <div class="simbolo">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="28" stroke="#ddd" stroke-width="1.5"/>
+            <circle cx="30" cy="30" r="4" fill="#7d9b76"/>
+            <circle cx="30" cy="8" r="2.5" fill="#ddd"/>
+            <circle cx="30" cy="52" r="2.5" fill="#ddd"/>
+            <circle cx="8" cy="30" r="2.5" fill="#ddd"/>
+            <circle cx="52" cy="30" r="2.5" fill="#ddd"/>
+            <line x1="30" y1="11" x2="30" y2="25" stroke="#ddd" stroke-width="1.5"/>
+            <line x1="30" y1="35" x2="30" y2="49" stroke="#ddd" stroke-width="1.5"/>
+            <line x1="11" y1="30" x2="25" y2="30" stroke="#ddd" stroke-width="1.5"/>
+            <line x1="35" y1="30" x2="49" y2="30" stroke="#ddd" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="1.5" fill="#eee"/>
+            <circle cx="48" cy="12" r="1.5" fill="#eee"/>
+            <circle cx="12" cy="48" r="1.5" fill="#eee"/>
+            <circle cx="48" cy="48" r="1.5" fill="#eee"/>
+          </svg>
+        </div>
         <div class="idle-text">el universo ya eligió<br>tu mensaje de hoy</div>
         <div class="idle-hint">— presiona para revelar —</div>
       </div>
 
       <div class="card-revealed" id="card-revealed">
-        <div class="card-tag" style="position:absolute;top:14px;right:14px;background:#7d9b76;color:#fff;font-size:9px;font-weight:500;letter-spacing:0.16em;padding:4px 10px;border-radius:20px;" id="r-area-tag"></div>
-        <div class="r-num" id="r-num"></div>
+        <div class="simbolo">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="20" stroke="#111" stroke-width="1.5"/>
+            <circle cx="22" cy="22" r="3.5" fill="#7d9b76"/>
+            <circle cx="22" cy="6" r="2" fill="#111"/>
+            <circle cx="22" cy="38" r="2" fill="#111"/>
+            <circle cx="6" cy="22" r="2" fill="#111"/>
+            <circle cx="38" cy="22" r="2" fill="#111"/>
+            <line x1="22" y1="9" x2="22" y2="18" stroke="#111" stroke-width="1"/>
+            <line x1="22" y1="26" x2="22" y2="35" stroke="#111" stroke-width="1"/>
+            <line x1="9" y1="22" x2="18" y2="22" stroke="#111" stroke-width="1"/>
+            <line x1="26" y1="22" x2="35" y2="22" stroke="#111" stroke-width="1"/>
+          </svg>
+        </div>
         <div class="r-nombre" id="r-nombre"></div>
         <div class="r-area" id="r-area"></div>
         <div class="linea"></div>
@@ -249,31 +222,74 @@
   </div>
 
   <div class="after-section" id="after-section">
-    <div>
-      <div class="reflexion-label">Espacio de reflexión</div>
-      <textarea class="reflexion-input" placeholder="¿qué te resonó de este mensaje?..." rows="3"></textarea>
+    <div class="pregunta-wrap">
+      <div class="pregunta-label">Pregunta de consciencia</div>
+      <div class="pregunta-text" id="r-pregunta"></div>
     </div>
     <button class="btn-nueva" onclick="nuevaLectura()">Nueva lectura ↻</button>
   </div>
 
-  <div class="app-footer">#vuelveatorigen</div>
+  <div class="app-footer">#VuelveAOrigen</div>
 </div>
-
-<div class="toast" id="toast"></div>
 
 <script>
   const CODIGOS = ["ORIGEN2025", "BARRAS01", "YALUZ"];
 
   const PUNTOS = [
-    { num: "1.", nombre: "Dinero", area: "Abundancia", mensaje: "La abundancia no es algo que persigues. Es algo que permites cuando dejas de creer que no mereces recibirla.", afirmacion: "Recibo con facilidad todo lo que el universo tiene para mí, ahora y siempre." },
-    { num: "5.", nombre: "Creatividad", area: "Creación", mensaje: "Tu creatividad no necesita permiso ni validación. Ya existe. Solo necesita espacio para fluir sin ser juzgada.", afirmacion: "Soy un canal abierto para ideas que transforman mi mundo y el de los demás." },
-    { num: "9.", nombre: "Cuerpo", area: "Bienestar", mensaje: "Tu cuerpo sabe más de lo que tu mente cree. Detente hoy y escúchalo. Una señal pequeña puede cambiarlo todo.", afirmacion: "Mi cuerpo es mi aliado más sabio. Lo honro, lo escucho, lo cuido." },
-    { num: "12.", nombre: "Control", area: "Libertad", mensaje: "¿Y si el control fuera solo un punto de vista que puedes elegir soltar? La vida fluye mejor cuando dejas de aferrarte a cómo debería ser.", afirmacion: "Confío en el flujo de mi vida y me permito ser sin resistencia." },
-    { num: "17.", nombre: "Esperanza", area: "Posibilidad", mensaje: "La esperanza no es ingenua — es un acto de valentía. Elige hoy ver la posibilidad donde otros solo ven un límite.", afirmacion: "Elijo la posibilidad por encima de la certeza. Siempre hay otra forma." },
-    { num: "21.", nombre: "Gratitud", area: "Presencia", mensaje: "Gratitud no es solo agradecer lo bueno. Es reconocer que incluso lo difícil te lleva hacia quien estás destinada a ser.", afirmacion: "Gracias por todo lo que soy, todo lo que tengo y todo lo que estoy creando." },
-    { num: "25.", nombre: "Paz", area: "Calma", mensaje: "La paz que buscas afuera ya existe dentro de ti. Hoy no tienes que buscarla — solo recuerda que siempre estuvo ahí.", afirmacion: "Soy paz. La irradio, la vivo, la elijo en cada momento." },
-    { num: "29.", nombre: "Vitalidad", area: "Energía", mensaje: "Tu energía es tu recurso más poderoso. Cuida hoy a quién y qué la recibe. No toda puerta merece que la abras.", afirmacion: "Mi energía es sagrada. La dirijo con consciencia hacia lo que me expande." },
-    { num: "32.", nombre: "Consciencia", area: "Expansión", mensaje: "Hoy eres más consciente que ayer. Eso es suficiente. La consciencia no se mide — se vive, se siente, se elige.", afirmacion: "Me expando más allá de lo que creía posible. Soy más de lo que pienso." }
+    {
+      nombre: "Dinero", area: "Abundancia",
+      mensaje: "La abundancia no es algo que persigues. Es algo que permites cuando dejas de creer que no mereces recibirla.",
+      afirmacion: "Recibo con facilidad todo lo que el universo tiene para mí, ahora y siempre.",
+      pregunta: "¿Qué energía y consciencia se requiere para que la abundancia fluya en mi vida con total facilidad y sin esfuerzo?"
+    },
+    {
+      nombre: "Creatividad", area: "Creación",
+      mensaje: "Tu creatividad no necesita permiso ni validación. Ya existe. Solo necesita espacio para fluir sin ser juzgada.",
+      afirmacion: "Soy un canal abierto para ideas que transforman mi mundo y el de los demás.",
+      pregunta: "¿Qué energía y consciencia se requiere para que mi creatividad se exprese sin límites ni juicios?"
+    },
+    {
+      nombre: "Cuerpo", area: "Bienestar",
+      mensaje: "Tu cuerpo sabe más de lo que tu mente cree. Detente hoy y escúchalo. Una señal pequeña puede cambiarlo todo.",
+      afirmacion: "Mi cuerpo es mi aliado más sabio. Lo honro, lo escucho, lo cuido.",
+      pregunta: "¿Qué energía y consciencia se requiere para que mi cuerpo y yo seamos verdaderos aliados hoy?"
+    },
+    {
+      nombre: "Control", area: "Libertad",
+      mensaje: "¿Y si el control fuera solo un punto de vista que puedes elegir soltar? La vida fluye mejor cuando dejas de aferrarte a cómo debería ser.",
+      afirmacion: "Confío en el flujo de mi vida y me permito ser sin resistencia.",
+      pregunta: "¿Qué energía y consciencia se requiere para que en lugar de controlar, pueda confiar y fluir?"
+    },
+    {
+      nombre: "Esperanza", area: "Posibilidad",
+      mensaje: "La esperanza no es ingenua — es un acto de valentía. Elige hoy ver la posibilidad donde otros solo ven un límite.",
+      afirmacion: "Elijo la posibilidad por encima de la certeza. Siempre hay otra forma.",
+      pregunta: "¿Qué energía y consciencia se requiere para que la posibilidad sea mi punto de partida en cada situación?"
+    },
+    {
+      nombre: "Gratitud", area: "Presencia",
+      mensaje: "Gratitud no es solo agradecer lo bueno. Es reconocer que incluso lo difícil te lleva hacia quien estás destinada a ser.",
+      afirmacion: "Gracias por todo lo que soy, todo lo que tengo y todo lo que estoy creando.",
+      pregunta: "¿Qué energía y consciencia se requiere para que la gratitud sea mi estado natural de ser?"
+    },
+    {
+      nombre: "Paz", area: "Calma",
+      mensaje: "La paz que buscas afuera ya existe dentro de ti. Hoy no tienes que buscarla — solo recuerda que siempre estuvo ahí.",
+      afirmacion: "Soy paz. La irradio, la vivo, la elijo en cada momento.",
+      pregunta: "¿Qué energía y consciencia se requiere para que en lugar de buscar la paz, me permita ser la paz?"
+    },
+    {
+      nombre: "Vitalidad", area: "Energía",
+      mensaje: "Tu energía es tu recurso más poderoso. Cuida hoy a quién y qué la recibe. No toda puerta merece que la abras.",
+      afirmacion: "Mi energía es sagrada. La dirijo con consciencia hacia lo que me expande.",
+      pregunta: "¿Qué energía y consciencia se requiere para que mi vitalidad se dirija solo hacia lo que me expande y me nutre?"
+    },
+    {
+      nombre: "Consciencia", area: "Expansión",
+      mensaje: "Hoy eres más consciente que ayer. Eso es suficiente. La consciencia no se mide — se vive, se siente, se elige.",
+      afirmacion: "Me expando más allá de lo que creía posible. Soy más de lo que pienso.",
+      pregunta: "¿Qué energía y consciencia se requiere para que me permita expandirme más allá de todos mis límites conocidos?"
+    }
   ];
 
   let revealed = false;
@@ -286,7 +302,7 @@
       document.getElementById('screen-access').classList.remove('active');
       document.getElementById('screen-app').classList.add('active');
       setFecha();
-      setIdleNum();
+      puntoActual = getPunto();
     } else {
       err.textContent = 'Código no válido — verifica e intenta de nuevo';
       setTimeout(() => err.textContent = '', 3000);
@@ -306,23 +322,17 @@
     return PUNTOS[Math.floor(Math.random() * PUNTOS.length)];
   }
 
-  function setIdleNum() {
-    puntoActual = getPunto();
-    document.getElementById('idle-num').textContent = puntoActual.num;
-  }
-
   function revelarCarta() {
     if (revealed) return;
     revealed = true;
     const p = puntoActual;
-    document.getElementById('r-num').textContent = p.num;
     document.getElementById('r-nombre').textContent = p.nombre;
     document.getElementById('r-area').textContent = p.area.toUpperCase();
-    document.getElementById('r-area-tag').textContent = p.area;
     document.getElementById('r-mensaje').textContent = p.mensaje;
     document.getElementById('r-afirmacion').textContent = p.afirmacion;
+    document.getElementById('r-pregunta').textContent = p.pregunta;
     document.getElementById('card-idle').style.display = 'none';
-    document.getElementById('card-tag-idle').style.display = 'none';
+    document.getElementById('card-tag').textContent = p.area;
     const rev = document.getElementById('card-revealed');
     rev.style.display = 'flex';
     rev.classList.add('fade-up');
@@ -334,9 +344,8 @@
   function nuevaLectura() {
     revealed = false;
     puntoActual = getPunto();
-    document.getElementById('idle-num').textContent = puntoActual.num;
     document.getElementById('card-idle').style.display = 'flex';
-    document.getElementById('card-tag-idle').style.display = 'block';
+    document.getElementById('card-tag').textContent = 'Oráculo diario';
     const rev = document.getElementById('card-revealed');
     rev.style.display = 'none';
     rev.classList.remove('fade-up');
